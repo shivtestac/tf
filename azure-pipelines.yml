@@ -1,0 +1,26 @@
+variables:
+  - name: AKS_CLUSTER_NAME
+    value: $(AKS_CLUSTER_NAME)
+  - name: RESOURCE_GROUP_NAME
+    value: $(RESOURCE_GROUP_NAME)
+  - name: K8S_SERVICE_CONN
+    value: $(K8S_SERVICE_CONN)
+
+stages:
+  - stage: Deploy
+    jobs:
+      - job: DeployToAKS
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - task: Kubernetes@1
+            displayName: 'kubectl apply to AKS'
+            inputs:
+              connectionType: 'Azure Resource Manager'
+              azureSubscriptionEndpoint: $(K8S_SERVICE_CONN)
+              azureResourceGroup: $(RESOURCE_GROUP_NAME)
+              kubernetesCluster: $(AKS_CLUSTER_NAME)
+              command: apply
+              useConfigurationFile: true
+              configuration: |
+                manifests/deployment.yaml
