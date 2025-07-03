@@ -5,13 +5,14 @@ variables:
     value: $(RESOURCE_GROUP_NAME)
   - name: K8S_SERVICE_CONN
     value: $(K8S_SERVICE_CONN)
+pool:
+ name: vmpool
+
 
 stages:
   - stage: Deploy
     jobs:
       - job: DeployToAKS
-        pool:
-          name: vmpool
         steps:
           - task: Kubernetes@1
             displayName: 'kubectl apply to AKS'
