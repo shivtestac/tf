@@ -17,9 +17,9 @@ stages:
             displayName: 'kubectl apply to AKS'
             inputs:
               connectionType: 'Azure Resource Manager'
-              azureSubscriptionEndpoint: $(K8S_SERVICE_CONN)
-              azureResourceGroup: $(RESOURCE_GROUP_NAME)
-              kubernetesCluster: $(AKS_CLUSTER_NAME)
+              azureSubscriptionEndpoint: $(k8s_service_connection_name)
+              azureResourceGroup: $(aks_resource_group_name)
+              kubernetesCluster: $(aks_cluster_name)
               command: apply
               useConfigurationFile: true
               configuration: |
