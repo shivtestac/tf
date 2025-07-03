@@ -1,10 +1,10 @@
 variables:
   - name: AKS_CLUSTER_NAME
-    value: $(AKS_CLUSTER_NAME)
+    value: $(aks_cluster_name)
   - name: RESOURCE_GROUP_NAME
-    value: $(RESOURCE_GROUP_NAME)
+    value: $(aks_resource_group_name)
   - name: K8S_SERVICE_CONN
-    value: $(K8S_SERVICE_CONN)
+    value: $(k8s_service_connection_name)
 
 stages:
   - stage: Deploy
