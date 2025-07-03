@@ -11,7 +11,7 @@ stages:
     jobs:
       - job: DeployToAKS
         pool:
-          vmImage: ubuntu-latest
+          name: vmpool
         steps:
           - task: Kubernetes@1
             displayName: 'kubectl apply to AKS'
