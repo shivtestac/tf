@@ -8,7 +8,6 @@ variables:
 pool:
  name: vmpool
 
-
 stages:
   - stage: Deploy
     jobs:
@@ -18,9 +17,9 @@ stages:
             displayName: 'kubectl apply to AKS'
             inputs:
               connectionType: 'Azure Resource Manager'
-              azureSubscriptionEndpoint: $(K8S_SERVICE_CONN)  
-              azureResourceGroup: $(RESOURCE_GROUP_NAME)    
-              kubernetesCluster: $(AKS_CLUSTER_NAME)        
+              azureSubscriptionEndpoint: K8  
+              azureResourceGroup: rg-demo    
+              kubernetesCluster: demoaks        
               command: apply
               useConfigurationFile: true
               configuration: |
