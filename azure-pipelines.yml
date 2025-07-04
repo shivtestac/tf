@@ -25,3 +25,4 @@ stages:
               useConfigurationFile: true
               configuration: |
                 manifests/deployment.yaml
+                
